@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri Automatique de Vis — Quentin Moraine</title>
+    <meta name="description" content="Conception d'un système de tri automatique de vis — mécanique, électronique, embarqué et Python. Projet Technique 4ᵉ année à l'Icam, rôle de chef de projet.">
+
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Tri Automatique de Vis — Quentin Moraine">
+    <meta property="og:description" content="Mécanique, électronique, embarqué & Python. Chef de projet, Projet Technique Icam.">
+    <meta property="og:image" content="../../assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="../../assets/og-image.png">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://unpkg.com; connect-src 'self' https://unpkg.com; base-uri 'self'; object-src 'none';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'" referrerpolicy="no-referrer"
+          href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap">
+    <noscript>
+        <link rel="stylesheet" referrerpolicy="no-referrer"
+              href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap">
+    </noscript>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div id="loader" class="loader">
+        <div class="loader-logo">01</div>
+        <div class="loader-bar-wrap"><div id="loaderBar" class="loader-bar"></div></div>
+        <p class="loader-sub">Tri Automatique de Vis</p>
+    </div>
+    <div id="cursorRing" class="cursor-ring" aria-hidden="true"></div>
+    <div id="cursorDot"  class="cursor-dot"  aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+        <a href="../../index.html" class="nav-logo">QM</a>
+        <nav class="nav-links">
+            <a href="../../index.html#projects" class="nav-link">Projets</a>
+            <a href="../../index.html#process"  class="nav-link">Process</a>
+            <a href="../../index.html#about"    class="nav-link">À propos</a>
+        </nav>
+        <a href="../../assets/CV-Quentin-Moraine.pdf" class="btn-nav btn-nav--cv mag-btn" download>CV ↓</a>
+        <a href="../contact/index.html" class="btn-nav mag-btn">Contact</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../../index.html#projects" class="mobile-link" data-num="01">Projets</a>
+        <a href="../../index.html#process"  class="mobile-link" data-num="02">Process</a>
+        <a href="../../index.html#about"    class="mobile-link" data-num="03">À propos</a>
+        <a href="../contact/index.html"     class="mobile-link" data-num="04">Contact</a>
+    </div>
+
+    <!-- HERO PROJET -->
+    <section class="proj-hero">
+        <div class="proj-hero-orb" aria-hidden="true"></div>
+        <div class="proj-bg-num" aria-hidden="true">01</div>
+        <div class="proj-hero-content">
+            <div class="proj-eyebrow reveal-up" data-delay="0.1">
+                <span>Robotique</span><span>Mécatronique</span><span>Python</span>
+            </div>
+            <h1 class="proj-title reveal-up" data-delay="0.25">Tri Automatique<br>de Vis</h1>
+            <p class="proj-desc reveal-up" data-delay="0.4">
+                Projet Technique de 4ᵉ année à l'Icam : la conception d'un système
+                capable de trier automatiquement des vis selon leur type. Un projet
+                pluridisciplinaire — mécanique, électronique, embarqué et Python —
+                que j'ai mené en tant que chef de projet.
+            </p>
+            <div class="proj-meta-row reveal-up" data-delay="0.52">
+                <div class="proj-meta-item"><span class="proj-meta-label">Année</span><span class="proj-meta-val">2025–2026</span></div>
+                <div class="proj-meta-item"><span class="proj-meta-label">Cadre</span><span class="proj-meta-val">Projet Technique · Icam</span></div>
+                <div class="proj-meta-item"><span class="proj-meta-label">Rôle</span><span class="proj-meta-val">Chef de projet</span></div>
+                <div class="proj-meta-item"><span class="proj-meta-label">Domaine</span><span class="proj-meta-val">Mécatronique</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <div class="proj-showcase">
+        <img src="../../assets/thumb-tri-vis.png" alt="Aperçu du projet de tri automatique de vis"
+             width="600" height="390" decoding="async">
+    </div>
+
+    <!-- CONTENU -->
+    <div class="proj-content">
+        <div class="content-row reveal-up">
+            <div class="content-media">
+                <div class="media-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg><span>Visuel à venir</span></div>
+            </div>
+            <div class="content-text">
+                <h2 class="content-section-title">Contexte</h2>
+                <p class="content-body">
+                    Le tri manuel de visserie est répétitif et chronophage. L'objectif :
+                    automatiser la reconnaissance et la séparation de vis de types différents,
+                    en concevant un système complet, fiable et reproductible, dans le cadre
+                    du Projet Technique de 4ᵉ année.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row reveal-up">
+            <div class="content-media">
+                <div class="media-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span>Visuel à venir</span></div>
+            </div>
+            <div class="content-text">
+                <h2 class="content-section-title">Mécanique</h2>
+                <p class="content-body">
+                    Conception CAO de la structure et des mécanismes d'acheminement et de
+                    séparation des vis. Choix des actionneurs, dimensionnement et intégration
+                    de l'ensemble pour un fonctionnement continu.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row reveal-up">
+            <div class="content-media">
+                <div class="media-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM2 10h2M2 14h2M20 10h2M20 14h2M10 2v2M14 2v2M10 20v2M14 20v2"/></svg><span>Visuel à venir</span></div>
+            </div>
+            <div class="content-text">
+                <h2 class="content-section-title">Électronique &amp; embarqué</h2>
+                <p class="content-body">
+                    Conception de la partie électronique (capteurs, pilotage des actionneurs)
+                    et programmation embarquée pour orchestrer le cycle de tri en temps réel.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row reveal-up">
+            <div class="content-media">
+                <div class="media-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg><span>Visuel à venir</span></div>
+            </div>
+            <div class="content-text">
+                <h2 class="content-section-title">Python &amp; pilotage</h2>
+                <p class="content-body">
+                    Développement en Python de la logique de tri et de l'interface de
+                    contrôle. Tests, réglages et itérations jusqu'à obtenir un tri fiable.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row reveal-up">
+            <div class="content-media">
+                <div class="media-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Visuel à venir</span></div>
+            </div>
+            <div class="content-text">
+                <h2 class="content-section-title">Gestion de projet</h2>
+                <p class="content-body">
+                    En tant que chef de projet : planification, répartition des tâches,
+                    gestion des imprévus techniques et arbitrages de conception pour tenir
+                    les objectifs dans les délais.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJET SUIVANT -->
+    <a href="../data-finance/index.html" class="proj-next">
+        <p class="proj-next-label">Projet suivant</p>
+        <p class="proj-next-name">Analyse de Données Financières <span class="proj-next-arrow">→</span></p>
+    </a>
+
+    <footer class="footer">
+        <span class="footer-copy">© 2026 Quentin Moraine</span>
+        <div class="footer-links">
+            <a href="mailto:quentin.moraine@2027.icam.fr" class="footer-link">Email</a>
+            <a href="https://www.linkedin.com/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
