@@ -227,6 +227,25 @@ if (cube && stage) {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   CONTACT FORM — mode email direct (mailto pré-rempli, sans backend)
+═══════════════════════════════════════════════════════════════════ */
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const to    = contactForm.dataset.email;
+        const name  = (document.getElementById('cf-name')?.value  || '').trim();
+        const email = (document.getElementById('cf-email')?.value || '').trim();
+        const msg   = (document.getElementById('cf-msg')?.value   || '').trim();
+
+        const subject = `Contact portfolio — ${name || 'Sans nom'}`;
+        const body    = `${msg}\n\n— ${name}${email ? ` (${email})` : ''}`;
+        window.location.href =
+            `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    PROJECT PAGE — INTERACT TOGGLE (Three.js hook)
 ═══════════════════════════════════════════════════════════════════ */
 const interactCb = document.getElementById('interactToggleCb');
