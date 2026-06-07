@@ -38,10 +38,11 @@ Dernière mise à jour : **2026-06-07**
 5. ✅ **Favicon + Open Graph** : `favicon.png`, `apple-touch-icon.png`, `og-image.png` (1200×630) + balises OG/Twitter sur toutes les pages
 
 ### ⚠️ Reste à compléter par toi (placeholders restants)
-- ⬜ **ID Formspree** : remplacer `VOTRE_ID_FORMSPREE` dans `pages/contact/index.html` par ton vrai endpoint (crée un compte gratuit sur formspree.io)
-- ⬜ **URLs LinkedIn / GitHub** : remplacer `https://www.linkedin.com/` et `https://github.com/` par tes vrais profils (présents dans toutes les pages)
+- ✅ **Formulaire contact** : passé en email direct (mailto pré-rempli) — fonctionnel sans backend. _Option future : Formspree pour recevoir les messages sans ouvrir l'appli mail._
+- ✅ **URLs LinkedIn / GitHub** : profils réels (`in/quentin-moraine-7a44022b5`, `github.com/quentin-moraine`) sur toutes les pages
 - ⬜ **Vraies photos** : croquis, captures CAO, photos du système de tri, screenshots de l'outil data → remplacer les `.media-ph` et les vignettes
-- ⬜ **CV** : ✅ le vrai PDF est en place (`assets/CV-Quentin-Moraine.pdf`)
+- ✅ **CV** : le vrai PDF est en place (`assets/CV-Quentin-Moraine.pdf`)
+- ✅ **Déploiement** : en ligne sur https://quentin-moraine.github.io/
 
 ---
 
