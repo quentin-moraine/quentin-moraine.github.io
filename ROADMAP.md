@@ -44,7 +44,7 @@ Dernière mise à jour : **2026-06-07**
 - ✅ **Tri de vis** : croquis, diagramme pieuvre, Gantt, détections YOLO, training, confusion — visuels réels intégrés
 - ✅ **Finanza (data-finance)** : 4 captures réelles de l'app (dashboard, transactions, catégories, annuel) sur **données de démo anonymisées** — stack corrigée Next.js (au lieu de Python/C++)
 - ⬜ **CAO / RFID** : compléter avec de vraies photos/captures quand dispo
-- ⚠️ **CV à corriger** : il mentionne « Python/C++ » pour l'outil financier alors que Finanza est en Next.js/TypeScript
+- ⚠️ **CV à corriger PAR TOI** (impossible par programme sans casser la mise en page Canva) : dans la ligne « Outil Python et C++ de suivi et d'analyse de données financières », remplacer **« Python et C++ » → « Next.js / TypeScript »**. ⚠️ NE PAS toucher la ligne « Apprentissage du C++ en autonomie » (elle est juste). À faire dans ton éditeur de CV (Canva/Word) puis ré-exporter le PDF dans `assets/CV-Quentin-Moraine.pdf`.
 - ✅ **CV** : le vrai PDF est en place (`assets/CV-Quentin-Moraine.pdf`)
 - ✅ **Déploiement** : en ligne sur https://quentin-moraine.github.io/
 
@@ -60,6 +60,7 @@ Dernière mise à jour : **2026-06-07**
 - ⬜ **Pas de secret côté client** : à respecter lors de la création du formulaire contact → service type Formspree/Web3Forms (déjà autorisé dans la CSP `form-action`)
 - ✅ **`referrerpolicy`** : `no-referrer` sur les liens fonts + `<meta name="referrer" content="strict-origin-when-cross-origin">` global
 - 💡 Héberger les fonts + Three.js en local (woff2 / module) plutôt que via CDN → perf + RGPD + permet enfin un vrai SRI
+- ✅ **Propriété / « anti-vol »** : `LICENSE` propriétaire (© tous droits réservés, copie/réutilisation interdites) = la vraie protection (juridique). + dissuasion technique : clic droit & raccourcis devtools désactivés, message console. ⚠️ **Important** : le front-end (HTML/CSS/JS) reste TOUJOURS lisible par le navigateur — aucun site ne peut empêcher ça ; les blocages sont seulement dissuasifs et contournables. Pour rendre le code illisible : minifier/obfusquer (optionnel, nécessite une étape de build).
 
 ---
 
@@ -125,7 +126,7 @@ Dernière mise à jour : **2026-06-07**
 - ⬜ **Plus de respiration** : marges encore plus généreuses (optionnel)
 - ⬜ **Cohérence des coins** : rayon unique (optionnel)
 - ✅ **Transition entre pages** : voile sunset (avec « QM ») qui balaie à chaque navigation interne — effet « app » premium (désactivé en reduced-motion)
-- 💡 **Mode sombre optionnel** (toggle) une fois le crème validé
+- ✅ **Mode sombre** : toggle dans la nav (lune/soleil), variables de thème, init sans flash, persistance localStorage + `prefers-color-scheme`. Crème reste le défaut.
 
 ---
 
