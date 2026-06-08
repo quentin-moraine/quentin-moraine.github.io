@@ -19,7 +19,8 @@ Dernière mise à jour : **2026-06-07**
 | Page contact | ✅ | Coordonnées + formulaire Formspree + honeypot |
 | Favicon + Open Graph | ✅ | favicon, apple-touch-icon, og-image 1200×630 |
 | Modèle 3D Three.js | ⬜ | Hook prévu, scène à brancher (optionnel) |
-| Déploiement (GitHub Pages) | ⬜ | À configurer |
+| Déploiement (GitHub Pages) | ✅ | **En ligne** : https://quentin-moraine.github.io/ |
+| Accessibilité (focus, curseur, contraste, reduced-motion) | ✅ | Passe a11y complet |
 
 ---
 
@@ -64,13 +65,14 @@ Dernière mise à jour : **2026-06-07**
 
 ## ♿ Accessibilité (a11y)
 
-- ⬜ **Contraste** : vérifier que crème + texte chaud passe WCAG AA (ratio ≥ 4.5:1 pour le texte courant)
-- ⬜ **`prefers-reduced-motion`** : désactiver grain animé, orbes, marquee, reveals pour les utilisateurs sensibles au mouvement
-- ⬜ **Curseur custom** : garder le curseur natif visible au clavier / tactile (le `cursor:none` gêne certains users) → fallback
-- ⬜ **Focus visible** : ajouter des styles `:focus-visible` nets (actuellement seul le hover est stylé)
-- ⬜ **`alt` descriptifs** sur toutes les images de contenu
-- ⬜ **Navigation clavier** : tester tab order, fermeture menu mobile au clavier (déjà : Escape ✅)
-- ⬜ **`aria-label`** sur les liens icônes / ambigus
+- ✅ **Contraste** : texte principal `#1C1714`, secondaire `#6E5D49` sur crème → WCAG AA
+- ✅ **`prefers-reduced-motion`** : coupe grain, orbes, marquee, reveals, curseur custom, parallaxe + compteurs
+- ✅ **Curseur custom** : désormais limité aux souris fines (`@media hover/pointer`) → curseur natif sur tactile/clavier
+- ✅ **Focus visible** : styles `:focus-visible` nets (contour sunset) sur liens, boutons, champs, cartes projet
+- ✅ **`alt` descriptifs** : images de contenu (tri-vis, Finanza) avec alt parlants ; décoratives en `alt=""`
+- ✅ **Navigation clavier** : focus visible + fermeture menu mobile (Escape)
+- ✅ **`aria-label`** : hamburger, sections ; liens sociaux explicites
+- 💡 Reste : audit complet lecteur d'écran (NVDA/VoiceOver) si besoin
 
 ---
 
@@ -115,14 +117,15 @@ Dernière mise à jour : **2026-06-07**
 - 💡 Reste possible (gros morceau) : motion **GSAP** au scroll (pinning, scrub, stacking de cartes) — nécessiterait d'ajouter la lib GSAP
 
 ### Design / « instagrammable »
-- 🔄 **Fond crème / blanc cassé** au lieu du noir (en cours)
-- ⬜ **Plus de respiration** : marges généreuses, sections aérées
-- ⬜ **Photos grand format** : visuels produit en pleine largeur, soignés (la clé de l'effet Instagram)
-- ⬜ **Cohérence des coins** : choisir un rayon unique (4px partout vs 8px) et s'y tenir
-- 💡 **Micro-animations sur les chiffres** (compteur stats qui monte)
-- 💡 **Transition entre pages** (page transition overlay sunset) pour l'effet « app » premium
+- ✅ **Fond crème / blanc cassé** au lieu du noir
+- ✅ **Photos grand format** : showcases pleine largeur (tri-vis, Finanza)
+- ✅ **Micro-animations sur les chiffres** : compteur count-up sur stats & KPIs (à l'apparition, respecte reduced-motion)
+- ✅ **Curseur** : label « Voir → » au survol des projets, « Projet → » sur le bloc suivant
+- ✅ **Navigation** : lien **Compétences** ajouté (desktop + mobile + pages projets)
+- ⬜ **Plus de respiration** : marges encore plus généreuses (optionnel)
+- ⬜ **Cohérence des coins** : rayon unique (optionnel)
+- 💡 **Transition entre pages** (overlay sunset) pour l'effet « app » premium
 - 💡 **Mode sombre optionnel** (toggle) une fois le crème validé
-- 💡 **Curseur** : afficher le label « Voir » au survol des projets
 
 ---
 

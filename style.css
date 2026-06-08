@@ -1535,6 +1535,46 @@ input:checked + .slider::before { transform: translateX(20px); background: var(-
 /* Affinage des icônes (traits plus fins = plus premium) */
 .process-icon svg, .media-ph svg { stroke-width: 1.25; }
 
+/* --- Label « Voir » qui suit le curseur sur les projets --- */
+.cursor-label {
+    position: fixed; top: 0; left: 0;
+    z-index: 9998; pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.6);
+    padding: 7px 14px; border-radius: 40px;
+    background: var(--grad); color: #fff;
+    font-family: var(--font-d); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    white-space: nowrap; opacity: 0;
+    transition: opacity 0.25s, transform 0.25s cubic-bezier(0.32,0.72,0,1);
+    text-shadow: 0 1px 2px rgba(120,30,0,0.35);
+}
+body.cursor-view .cursor-label { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+/* sur les projets : on masque l'anneau/point au profit du label */
+body.cursor-view .cursor-ring,
+body.cursor-view .cursor-dot { opacity: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ACCESSIBILITÉ
+═══════════════════════════════════════════════════════════════════════ */
+/* Focus clavier net et visible (sunset) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.project-row:focus-visible,
+.proj-next:focus-visible,
+.pg-stage:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Curseur custom uniquement sur souris fine ; sur tactile/clavier → curseur natif */
+@media (hover: none), (pointer: coarse) {
+    body { cursor: auto; }
+    .cursor-ring, .cursor-dot, .cursor-label { display: none !important; }
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    UTILITIES
 ═══════════════════════════════════════════════════════════════════════ */

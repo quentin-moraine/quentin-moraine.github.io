@@ -25,13 +25,17 @@ document.body.style.overflow = 'hidden';
 ═══════════════════════════════════════════════════════════════════ */
 const ring = document.getElementById('cursorRing');
 const dot  = document.getElementById('cursorDot');
+const label = document.createElement('div');
+label.className = 'cursor-label';
+document.body.appendChild(label);
 let   mx = window.innerWidth / 2,  my = window.innerHeight / 2;
 let   rx = mx, ry = my;
 
 document.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
-    if (dot) { dot.style.left = mx + 'px'; dot.style.top = my + 'px'; }
+    if (dot)   { dot.style.left = mx + 'px';   dot.style.top = my + 'px'; }
+    if (label) { label.style.left = mx + 'px'; label.style.top = my + 'px'; }
 });
 
 ;(function animRing() {
@@ -51,6 +55,16 @@ function addHover(sel) {
     });
 }
 addHover('a, button, .project-row, .proj-next, .stat-card, .zoom-btn, .hamburger');
+
+/* Label « Voir » au survol des projets */
+function addViewLabel(sel, text) {
+    document.querySelectorAll(sel).forEach(el => {
+        el.addEventListener('mouseenter', () => { label.textContent = text; document.body.classList.add('cursor-view'); });
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-view'));
+    });
+}
+addViewLabel('.project-row', 'Voir →');
+addViewLabel('.proj-next', 'Projet →');
 
 /* ═══════════════════════════════════════════════════════════════════
    MAGNETIC BUTTONS
@@ -155,6 +169,35 @@ function initReveal() {
             el.style.transitionDelay = el.dataset.delay + 's';
         io.observe(el);
     });
+    initCounters();
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMPTEURS ANIMÉS (stats & KPIs) — count-up à l'apparition
+═══════════════════════════════════════════════════════════════════ */
+function initCounters() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = document.querySelectorAll('.stat-num, .kpi-num');
+    if (reduce) return; // on garde les valeurs finales telles quelles
+
+    const animate = (el) => {
+        const m = el.textContent.trim().match(/^(\D*)(\d+)(\D*)$/);
+        if (!m) return;                       // pas de nombre (ex. MSc, CSV) → on ignore
+        const prefix = m[1], target = parseInt(m[2], 10), suffix = m[3];
+        const dur = 1100, t0 = performance.now();
+        const tick = (now) => {
+            const p = Math.min((now - t0) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+            el.textContent = prefix + Math.round(eased * target) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    els.forEach(el => io.observe(el));
 }
 
 /* ═══════════════════════════════════════════════════════════════════
