@@ -18,7 +18,8 @@ Dernière mise à jour : **2026-06-07**
 | Pages projets (tri-vis, data-finance) | ✅ | Créées ; `charging-case` fictive supprimée |
 | Page contact | ✅ | Coordonnées + formulaire Formspree + honeypot |
 | Favicon + Open Graph | ✅ | favicon, apple-touch-icon, og-image 1200×630 |
-| Modèle 3D Three.js | ⬜ | Hook prévu, scène à brancher (optionnel) |
+| Modèle 3D Three.js | ✅ | Vraie Raspberry Pi 5 dans le playground (GLB 1,1 Mo, 61fps, self-hosté) |
+| Bilingue FR / EN | 🔄 | Sélecteur FR|EN + **home 100 %** ; reste : pages projets + contact |
 | Déploiement (GitHub Pages) | ✅ | **En ligne** : https://quentin-moraine.github.io/ |
 | Accessibilité (focus, curseur, contraste, reduced-motion) | ✅ | Passe a11y complet |
 
