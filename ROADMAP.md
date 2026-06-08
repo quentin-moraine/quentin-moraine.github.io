@@ -61,6 +61,7 @@ Dernière mise à jour : **2026-06-07**
 - ✅ **`referrerpolicy`** : `no-referrer` sur les liens fonts + `<meta name="referrer" content="strict-origin-when-cross-origin">` global
 - 💡 Héberger les fonts + Three.js en local (woff2 / module) plutôt que via CDN → perf + RGPD + permet enfin un vrai SRI
 - ✅ **Propriété / « anti-vol »** : `LICENSE` propriétaire (© tous droits réservés, copie/réutilisation interdites) = la vraie protection (juridique). + dissuasion technique : clic droit & raccourcis devtools désactivés, message console. ⚠️ **Important** : le front-end (HTML/CSS/JS) reste TOUJOURS lisible par le navigateur — aucun site ne peut empêcher ça ; les blocages sont seulement dissuasifs et contournables. Pour rendre le code illisible : minifier/obfusquer (optionnel, nécessite une étape de build).
+- ✅ **Minification + obfuscation** : chaîne de build (`build.mjs` : clean-css + html-minifier-terser + javascript-obfuscator). Sources lisibles dans `src/` (ignoré par git, non publié) ; la racine servie est minifiée/obfusquée. ⚠️ **Workflow** : éditer `src/`, puis `npm run build`, puis commit/push. ⚠️ **Sauvegarder `src/`** (pas dans le dépôt). _Caveat : l'historique git contient encore les anciennes versions lisibles — un `squash` serait nécessaire pour les purger (non fait, destructif)._
 
 ---
 
