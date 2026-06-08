@@ -87,7 +87,7 @@ Dernière mise à jour : **2026-06-07**
 - ✅ **Vidéos** : `preload="metadata"` + `poster` + dimensions sur les `<video>` → pas de téléchargement complet avant lecture, pas de layout shift
 - ⬜ **Vidéos — encodage** : compresser les vrais fichiers (H.264/H.265, bitrate maîtrisé) une fois fournis
 - ✅ **Fonts — non-bloquantes** : chargement Google Fonts en `media="print" onload` + `<noscript>` fallback → supprime la requête bloquante au rendu (le loader masque tout flash). `display=swap` déjà actif.
-- 💡 **Fonts — self-host** : héberger les `.woff2` en local + `<link rel="preload">` (perf maximale + RGPD, pas d'appel à Google qui logge l'IP). À faire si tu obtiens les fichiers.
+- ✅ **Fonts — self-host** : polices Barlow Condensed + Outfit hébergées en local (`assets/fonts/`, 20 woff2 latin/latin-ext) + `assets/fonts.css`. **0 requête vers Google** (vérifié) → meilleur RGPD + perf. CSP resserrée en conséquence (plus de `fonts.googleapis.com`/`gstatic`).
 - ✅ **Grain — coût CPU** : animation **figée sur mobile** (`max-width:768px`) et **désactivée** en `prefers-reduced-motion` → économie CPU/batterie
 - ✅ **`prefers-reduced-motion`** : bloc global qui coupe grain, orbes, marquee, reveals, curseur custom et réduit les transitions → moins de calcul + accessibilité
 - ⬜ **Open Graph / favicon** : ajouter l'image de partage (impacte le ressenti, pas le score Lighthouse)
@@ -116,7 +116,8 @@ Dernière mise à jour : **2026-06-07**
 - ✅ **Barre de progression de scroll** (gradient sunset, en haut, injectée par JS)
 - ✅ **Parallaxe douce** des orbes au scroll (propriété `translate`, composée avec l'animation, désactivée en reduced-motion)
 - ✅ **Souligné animé** sur les liens de nav · **icônes affinées** (stroke 1.25)
-- 💡 Reste possible (gros morceau) : motion **GSAP** au scroll (pinning, scrub, stacking de cartes) — nécessiterait d'ajouter la lib GSAP
+- ✅ **Motion GSAP au scroll** (GSAP + ScrollTrigger, self-hosted) : **scrub** parallaxe du titre hero + **scrub** zoom du visuel des pages projet. _Le « pin » du titre Projets a été retiré : il chevauchait le contenu dans ce layout centré empilé — les effets scrub sont plus élégants ici._ Coupé en reduced-motion.
+- ✅ **Robustesse reveals** : `history.scrollRestoration='manual'` + révélation immédiate des éléments déjà dans/au-dessus du viewport → plus de contenu invisible si la page est chargée scrollée (anciennement latent).
 
 ### Design / « instagrammable »
 - ✅ **Fond crème / blanc cassé** au lieu du noir
