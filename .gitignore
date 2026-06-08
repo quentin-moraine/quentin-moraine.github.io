@@ -1,5 +1,12 @@
 # Dépendances
 node_modules/
+package-lock.json
+
+# ─── SOURCES LISIBLES (privées) ───
+# src/ contient le code NON minifié. On NE le publie PAS dans le dépôt public :
+# seuls les fichiers minifiés/obfusqués (racine) sont servis.
+# ⚠️ SAUVEGARDE src/ ailleurs (disque externe / dépôt privé) — c'est ta vraie source !
+src/
 
 # Outils locaux (skills tiers, config éditeur) — pas pour la prod
 .agents/

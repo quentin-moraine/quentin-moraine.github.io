@@ -18,6 +18,23 @@ Site statique (HTML / CSS / JS, sans framework). Thème « sunset cream », cont
     └── data-finance/       # Projet : Analyse de Données Financières
 ```
 
+## ⚙️ Code source & build (minifié / obfusqué)
+
+Les fichiers servis à la racine (`index.html`, `style.css`, `script.js`, `pages/**`)
+sont **minifiés et obfusqués**. Les **sources lisibles** vivent dans **`src/`** (ignoré par git → non publié).
+
+> ⚠️ `src/` n'est PAS dans le dépôt : **sauvegarde-le** (disque externe / dépôt privé). C'est ta vraie source éditable.
+
+**Pour modifier le site :**
+```bash
+# 1. éditer les fichiers dans src/  (jamais les fichiers minifiés de la racine)
+# 2. régénérer les fichiers servis :
+npm install        # une seule fois
+npm run build      # src/ → racine (minifié + obfusqué)
+# 3. publier
+git add -A && git commit -m "..." && git push
+```
+
 ## Développement local
 
 ```bash
