@@ -67,6 +67,50 @@ addViewLabel('.project-row', 'Voir →');
 addViewLabel('.proj-next', 'Projet →');
 
 /* ═══════════════════════════════════════════════════════════════════
+   THÈME CLAIR / SOMBRE
+═══════════════════════════════════════════════════════════════════ */
+(function initTheme() {
+    const navEl = document.getElementById('nav');
+    if (!navEl) return;
+    const btn = document.createElement('button');
+    btn.className = 'theme-toggle';
+    btn.id = 'themeToggle';
+    btn.setAttribute('aria-label', 'Basculer le thème clair / sombre');
+    btn.innerHTML =
+        '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' +
+        '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
+    const firstBtn = navEl.querySelector('.btn-nav') || navEl.querySelector('.hamburger');
+    navEl.insertBefore(btn, firstBtn);
+
+    btn.addEventListener('click', () => {
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        if (isDark) { delete document.documentElement.dataset.theme; localStorage.setItem('theme', 'light'); }
+        else        { document.documentElement.dataset.theme = 'dark'; localStorage.setItem('theme', 'dark'); }
+    });
+    btn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    btn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROTECTION / DISSUASION (note : le front-end reste techniquement
+   lisible — la vraie protection est la LICENCE propriétaire + ©)
+═══════════════════════════════════════════════════════════════════ */
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+    const k = (e.key || '').toUpperCase();
+    if (e.key === 'F12'
+        || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['I', 'J', 'C'].includes(k))
+        || ((e.ctrlKey || e.metaKey) && k === 'U')
+        || (e.metaKey && e.altKey && ['I', 'J', 'C'].includes(k))) {
+        e.preventDefault();
+    }
+});
+try {
+    console.log('%c© 2026 Quentin Moraine — Tous droits réservés.', 'color:#FF4500;font-weight:700;font-size:14px');
+    console.log('%cCe site et son code sont protégés. Toute copie ou réutilisation est interdite.', 'color:#8a7a66');
+} catch (e) {}
+
+/* ═══════════════════════════════════════════════════════════════════
    MAGNETIC BUTTONS
 ═══════════════════════════════════════════════════════════════════ */
 document.querySelectorAll('.mag-btn').forEach(btn => {

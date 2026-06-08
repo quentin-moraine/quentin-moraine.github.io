@@ -31,6 +31,42 @@
     --nav-h: 70px;
     --px:    clamp(20px, 6vw, 96px);
     --py:    clamp(80px, 12vh, 160px);
+
+    --grain-blend: multiply;   /* grain sombre sur fond clair */
+    --nav-blur-bg: rgba(246, 238, 225, 0.78);
+    --bar-track:   rgba(28, 23, 20, 0.12);
+    --card-hi:     rgba(255, 255, 255, 0.55);
+}
+
+/* ─── THÈME SOMBRE (toggle) ─── */
+html[data-theme="dark"] {
+    --bg:       #14100D;   /* brun très sombre chaud */
+    --bg-card:  #1E1813;
+    --bg-card2: #271F18;
+
+    --fg:       #F3EAD9;   /* crème clair */
+    --fg-muted: #B6A48E;   /* secondaire — AA sur sombre */
+    --fg-dim:   #5C4F42;
+
+    --border:    rgba(243, 234, 217, 0.10);
+    --border-hl: rgba(255, 122, 47, 0.45);
+
+    --shadow-warm: 0 12px 44px rgba(0, 0, 0, 0.45);
+
+    --grain-blend: screen;     /* grain clair sur fond sombre */
+    --nav-blur-bg: rgba(20, 16, 13, 0.82);
+    --bar-track:   rgba(243, 234, 217, 0.12);
+    --card-hi:     rgba(255, 255, 255, 0.06);
+}
+html { transition: none; }
+html[data-theme] body,
+html[data-theme] .nav,
+html[data-theme] .stat-card,
+html[data-theme] .skill-cat,
+html[data-theme] .process-step,
+html[data-theme] .form-input,
+html[data-theme] .loader {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -67,7 +103,7 @@ p { text-wrap: pretty; }
     pointer-events: none;
     z-index: 9999;
     opacity: 0.06;
-    mix-blend-mode: multiply;
+    mix-blend-mode: var(--grain-blend);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
     animation: grain 0.35s steps(1) infinite;
 }
@@ -108,7 +144,7 @@ p { text-wrap: pretty; }
 }
 .loader-bar-wrap {
     width: 180px; height: 1.5px;
-    background: rgba(28,23,20,0.12);
+    background: var(--bar-track);
     border-radius: 2px; overflow: hidden;
 }
 .loader-bar {
@@ -196,7 +232,7 @@ body.cursor-hidden .cursor-dot { opacity: 0; }
     border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-    background: rgba(246, 238, 225, 0.78);
+    background: var(--nav-blur-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-color: var(--border);
@@ -239,6 +275,24 @@ body.cursor-hidden .cursor-dot { opacity: 0; }
     color: #fff;
     box-shadow: 0 0 20px rgba(255,69,0,0.3);
 }
+
+/* Bouton bascule thème clair/sombre (injecté par le JS) */
+.theme-toggle {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--fg);
+    cursor: none;
+    display: flex; align-items: center; justify-content: center;
+    margin-right: 16px; flex-shrink: 0;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+}
+.theme-toggle:hover { border-color: var(--border-hl); color: var(--orange); transform: rotate(-12deg); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 .hamburger {
     display: none;
@@ -1526,7 +1580,7 @@ input:checked + .slider::before { transform: translateX(20px); background: var(-
 
 /* --- Cartes bento : léger relief « hardware » (lumière du haut) --- */
 .stat-card, .process-step, .skill-cat {
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 1px 0 var(--card-hi);
 }
 
 /* --- Souligné animé sur les liens de nav --- */
@@ -1598,6 +1652,18 @@ textarea:focus-visible,
     body { cursor: auto; }
     .cursor-ring, .cursor-dot, .cursor-label { display: none !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FLUIDITÉ — rendu accéléré des sections hors écran
+═══════════════════════════════════════════════════════════════════════ */
+/* Le navigateur ne calcule le rendu de ces sections que lorsqu'elles
+   approchent du viewport → scroll plus fluide sur les longues pages. */
+.process, .skills, .testimonials, .about, .cta-section, .proj-content, .proj-gallery {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+}
+/* Indices GPU sur les éléments animés en continu */
+.cursor-ring, .cursor-dot, .marquee-track, .hero-orb, .cube { will-change: transform; }
 
 /* ═══════════════════════════════════════════════════════════════════════
    UTILITIES
