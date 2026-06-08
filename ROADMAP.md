@@ -81,7 +81,7 @@ Dernière mise à jour : **2026-06-07**
 > Section traitée le 2026-06-07. ✅ = appliqué dans le code · ⬜ = dépend des vrais assets / à faire à la fin
 
 - ✅ **Images — attributs anti-CLS** : `width`/`height` explicites + `loading="lazy"` + `decoding="async"` sur toutes les `<img>` de contenu et les previews projets → réserve la place, charge à la demande
-- ⬜ **Images — format** : convertir les vrais visuels en **WebP/AVIF** (à faire en même temps que l'ajout des photos) — gain ~30-70 % de poids
+- ✅ **Images — format WebP** : tous les visuels de contenu convertis en `.webp` (qualité 82) → **−68 %** (3,6 Mo → 1,2 Mo). Favicon/OG/apple-touch gardés en PNG (compat sociale).
 - ✅ **Vidéos** : `preload="metadata"` + `poster` + dimensions sur les `<video>` → pas de téléchargement complet avant lecture, pas de layout shift
 - ⬜ **Vidéos — encodage** : compresser les vrais fichiers (H.264/H.265, bitrate maîtrisé) une fois fournis
 - ✅ **Fonts — non-bloquantes** : chargement Google Fonts en `media="print" onload` + `<noscript>` fallback → supprime la requête bloquante au rendu (le loader masque tout flash). `display=swap` déjà actif.
@@ -124,7 +124,7 @@ Dernière mise à jour : **2026-06-07**
 - ✅ **Navigation** : lien **Compétences** ajouté (desktop + mobile + pages projets)
 - ⬜ **Plus de respiration** : marges encore plus généreuses (optionnel)
 - ⬜ **Cohérence des coins** : rayon unique (optionnel)
-- 💡 **Transition entre pages** (overlay sunset) pour l'effet « app » premium
+- ✅ **Transition entre pages** : voile sunset (avec « QM ») qui balaie à chaque navigation interne — effet « app » premium (désactivé en reduced-motion)
 - 💡 **Mode sombre optionnel** (toggle) une fois le crème validé
 
 ---

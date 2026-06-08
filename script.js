@@ -82,6 +82,34 @@ document.querySelectorAll('.mag-btn').forEach(btn => {
 });
 
 /* ═══════════════════════════════════════════════════════════════════
+   TRANSITION DE PAGE (voile sunset sur navigation interne)
+═══════════════════════════════════════════════════════════════════ */
+const pageT = document.createElement('div');
+pageT.className = 'page-transition';
+pageT.innerHTML = '<span>QM</span>';
+document.body.appendChild(pageT);
+
+document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href) return;
+    if (a.target === '_blank' || a.hasAttribute('download')) return;
+    if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+    let url;
+    try { url = new URL(a.href, location.href); } catch { return; }
+    if (url.origin !== location.origin) return;            // lien externe
+    if (url.pathname === location.pathname) return;        // même page (ancre)
+
+    e.preventDefault();
+    const go = () => { window.location.href = a.href; };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { go(); return; }
+    pageT.classList.add('active');
+    setTimeout(go, 480);
+});
+
+/* ═══════════════════════════════════════════════════════════════════
    SCROLL PROGRESS BAR (injectée)
 ═══════════════════════════════════════════════════════════════════ */
 const progress = document.createElement('div');

@@ -1473,6 +1473,30 @@ input:checked + .slider::before { transform: translateX(20px); background: var(-
    PREMIUM PASS — détails « agence »
 ═══════════════════════════════════════════════════════════════════════ */
 
+/* --- Transition de page (voile sunset qui balaie vers le haut) --- */
+.page-transition {
+    position: fixed; inset: 0; z-index: 9997;
+    background: var(--grad);
+    transform: scaleY(0); transform-origin: bottom center;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+}
+.page-transition.active {
+    transform: scaleY(1);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.page-transition span {
+    font-family: var(--font-d);
+    font-size: 12vmin; font-weight: 900;
+    letter-spacing: -0.02em; color: #fff;
+    opacity: 0; transform: translateY(12px);
+    text-shadow: 0 2px 12px rgba(120,30,0,0.35);
+}
+.page-transition.active span {
+    opacity: 1; transform: translateY(0);
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+}
+
 /* --- Barre de progression de scroll (injectée par le JS) --- */
 .scroll-progress {
     position: fixed; top: 0; left: 0;
