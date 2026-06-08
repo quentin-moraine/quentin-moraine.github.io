@@ -40,7 +40,10 @@ Dernière mise à jour : **2026-06-07**
 ### ⚠️ Reste à compléter par toi (placeholders restants)
 - ✅ **Formulaire contact** : passé en email direct (mailto pré-rempli) — fonctionnel sans backend. _Option future : Formspree pour recevoir les messages sans ouvrir l'appli mail._
 - ✅ **URLs LinkedIn / GitHub** : profils réels (`in/quentin-moraine-7a44022b5`, `github.com/quentin-moraine`) sur toutes les pages
-- ⬜ **Vraies photos** : croquis, captures CAO, photos du système de tri, screenshots de l'outil data → remplacer les `.media-ph` et les vignettes
+- ✅ **Tri de vis** : croquis, diagramme pieuvre, Gantt, détections YOLO, training, confusion — visuels réels intégrés
+- ✅ **Finanza (data-finance)** : 4 captures réelles de l'app (dashboard, transactions, catégories, annuel) sur **données de démo anonymisées** — stack corrigée Next.js (au lieu de Python/C++)
+- ⬜ **CAO / RFID** : compléter avec de vraies photos/captures quand dispo
+- ⚠️ **CV à corriger** : il mentionne « Python/C++ » pour l'outil financier alors que Finanza est en Next.js/TypeScript
 - ✅ **CV** : le vrai PDF est en place (`assets/CV-Quentin-Moraine.pdf`)
 - ✅ **Déploiement** : en ligne sur https://quentin-moraine.github.io/
 
