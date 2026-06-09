@@ -6,7 +6,21 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 const canvas = document.getElementById('rpiCanvas');
-if (canvas) {
+
+// Détection WebGL : si indisponible (rare, ou rendu headless), on masque
+// proprement le canvas plutôt que de laisser Three.js lever des erreurs.
+let glOK = false;
+try {
+  const probe = document.createElement('canvas');
+  glOK = !!(window.WebGLRenderingContext && (probe.getContext('webgl') || probe.getContext('experimental-webgl')));
+} catch (e) { glOK = false; }
+
+if (canvas && !glOK) {
+  canvas.style.display = 'none';
+  document.getElementById('pgHint')?.classList.add('hide');
+}
+
+if (canvas && glOK) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const wrap = canvas.parentElement;
 
