@@ -92,7 +92,7 @@ Dernière mise à jour : **2026-06-07**
 - ✅ **Grain — coût CPU** : animation **figée sur mobile** (`max-width:768px`) et **désactivée** en `prefers-reduced-motion` → économie CPU/batterie
 - ✅ **`prefers-reduced-motion`** : bloc global qui coupe grain, orbes, marquee, reveals, curseur custom et réduit les transitions → moins de calcul + accessibilité
 - ⬜ **Open Graph / favicon** : ajouter l'image de partage (impacte le ressenti, pas le score Lighthouse)
-- 💡 **Lighthouse** : viser 95+ sur les 4 catégories avant déploiement (à mesurer une fois les vrais assets en place)
+- ✅ **Lighthouse** (mesuré, live) : Performance 99 · Accessibilité 100 · Bonnes pratiques 100 · SEO 100.
 
 ---
 
@@ -154,6 +154,10 @@ Dernière mise à jour : **2026-06-07**
 ---
 
 ## ✅ Fait
+
+- ✅ SEO : sitemap.xml, robots.txt, JSON-LD Person, canonical, og:url
+- ✅ Page 404 sunset personnalisée
+- ✅ Accessibilité : landmark <main>, menu aria-label, fallback WebGL (Lighthouse 100)
 
 - ✅ Structure home complète (hero, marquee, projets, about, CTA, footer)
 - ✅ Template de page projet (`pages/charging-case/`)
