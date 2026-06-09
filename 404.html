@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page introuvable · Quentin Moraine</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline'; base-uri 'self'; object-src 'none';">
+    <link rel="stylesheet" href="/assets/fonts.css">
+    <script>try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.dataset.theme="dark";}catch(e){}</script>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .e404 {
+            min-height: 100svh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 0 var(--px); position: relative; overflow: hidden;
+        }
+        .e404-orb {
+            position: absolute; top: 50%; left: 50%;
+            width: 70vw; height: 70vw; max-width: 760px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,107,0,0.22) 0%, transparent 66%);
+            filter: blur(60px); pointer-events: none; border-radius: 50%;
+        }
+        .e404-num {
+            position: relative; z-index: 1;
+            font-family: var(--font-d); font-weight: 900; line-height: 0.9;
+            font-size: clamp(120px, 28vw, 320px); letter-spacing: -0.03em;
+            background: var(--grad);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .e404-msg {
+            position: relative; z-index: 1;
+            font-family: var(--font-d); font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.04em; font-size: clamp(18px, 3vw, 28px);
+            color: var(--fg); margin-top: 8px;
+        }
+        .e404-sub { position: relative; z-index: 1; color: var(--fg-muted); margin: 14px 0 36px; }
+        .e404 .btn-primary { position: relative; z-index: 1; }
+    </style>
+</head>
+<body>
+    <div class="grain" aria-hidden="true"></div>
+    <main class="e404">
+        <div class="e404-orb" aria-hidden="true"></div>
+        <div class="e404-num">404</div>
+        <p class="e404-msg">Page introuvable</p>
+        <p class="e404-sub">Cette page n'existe pas ou a été déplacée. <br>This page doesn't exist or has moved.</p>
+        <a href="/" class="btn-primary"><span>Retour à l'accueil</span><span class="btn-ico" aria-hidden="true">↗</span></a>
+    </main>
+</body>
+</html>
