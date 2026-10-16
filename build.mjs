@@ -7,7 +7,8 @@
  * Usage : npm run build
  * NB : les sources lisibles vivent dans src/ (hors dépôt public via .gitignore).
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { glob } from 'node:fs/promises';
 import CleanCSS from 'clean-css';
 import { minify as minifyHtml } from 'html-minifier-terser';
@@ -55,6 +56,7 @@ for await (const file of glob('src/**/*.html')) {
   const src = readFileSync(file, 'utf8');
   const out = await minifyHtml(src, htmlOpts);
   const dest = file.replace(/^src\//, '');
+  mkdirSync(dirname(dest), { recursive: true });
   writeFileSync(dest, out);
   console.log('HTML minifié  →', dest, `(${out.length} o)`);
 }

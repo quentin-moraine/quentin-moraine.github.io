@@ -3,7 +3,7 @@
 > Fichier de pilotage. Mis à jour au fil de l'eau.
 > Légende : ✅ fait · 🔄 en cours · ⬜ à faire · 💡 idée / nice-to-have
 
-Dernière mise à jour : **2026-06-07**
+Dernière mise à jour : **2026-10-16**
 
 ---
 
@@ -26,6 +26,15 @@ Dernière mise à jour : **2026-06-07**
 ---
 
 ## 🔄 En cours
+
+**16/10/2026 — mise à jour Cranfield / recherche de stage**
+- ✅ Nouvelle page projet 01 `pages/abb-robotstudio/` (workshops RobotStudio + cellule de dessin IRB 120), vignette `assets/thumb-abb.svg`, sitemap
+- ✅ Anglais par défaut (FR au clic) ; badge « stage 7 mois dès avril 2027 » (hero + contact) ; section Parcours ; compétences alignées sur le CV EN
+- ✅ CV en ligne = `CV_Quentin_Moraine_EN.pdf` (14/10) ; mail Cranfield partout ; localisation Cranfield
+- ✅ Honnêteté : stack Finanza retirée des pages publiques ; KPI tri de vis cibles (>95 %, <3 s) → mAP50 0,979 mesuré
+- ✅ Vidéo pick & place (11 s, recadrée sur la vue 3D, fin avec le centre de notifications coupée)
+- ✅ CV régénéré avec le projet ABB (EN, EN_EU, FR) ; chiffres R-CUA publiés, validé par Quentin
+- ⬜ Médias ABB restants : photo/vidéo du test réel IRB 120, captures RobotStudio
 
 - _(rien en cours — prochaine étape : contenu réel & pages manquantes)_
 
