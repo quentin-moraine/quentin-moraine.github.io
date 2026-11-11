@@ -1,6 +1,6 @@
 /**
  * Build : src/ (lisible) -> racine (servi), minifie.
- *  - JS   : terser
+ *  - JS   : terser (tous les src/*.js)
  *  - CSS  : clean-css (tous les src/*.css)
  *  - HTML : html-minifier-terser (toutes les pages de src/)
  *
@@ -17,9 +17,11 @@ import { minify as minifyJs } from 'terser';
 const banner = `/* (c) 2026 Quentin Moraine */\n`;
 
 // ---- JS ----
-const js = await minifyJs(readFileSync('src/script.js', 'utf8'));
-writeFileSync('script.js', banner + js.code);
-console.log('JS   ->', 'script.js', `(${js.code.length} o)`);
+for await (const file of glob('src/*.js')) {
+  const js = await minifyJs(readFileSync(file, 'utf8'));
+  writeFileSync(basename(file), banner + js.code);
+  console.log('JS   ->', basename(file), `(${js.code.length} o)`);
+}
 
 // ---- CSS ----
 for await (const file of glob('src/*.css')) {

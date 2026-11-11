@@ -1,19 +1,19 @@
-# Dépendances
+# Dependances
 node_modules/
 package-lock.json
 
-# ─── SOURCES LISIBLES (privées) ───
-# src/ contient le code NON minifié. On NE le publie PAS dans le dépôt public :
-# seuls les fichiers minifiés/obfusqués (racine) sont servis.
-# ⚠️ SAUVEGARDE src/ ailleurs (disque externe / dépôt privé) — c'est ta vraie source !
+# Sources non minifiees (le depot ne contient que les fichiers servis)
 src/
 
-# Outils locaux (skills tiers, config éditeur) — pas pour la prod
+# Fichiers de suivi et outils locaux
+ROADMAP.md
+PRODUCT.md
 .agents/
 .claude/
+.impeccable/
 skills-lock.json
 
-# OS / éditeurs
+# OS / editeurs
 .DS_Store
 Thumbs.db
 *.log

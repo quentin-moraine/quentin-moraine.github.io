@@ -1,0 +1,2 @@
+/* (c) 2026 Quentin Moraine */
+try{const e=localStorage.getItem("theme");("dark"===e||!e&&matchMedia("(prefers-color-scheme: dark)").matches)&&(document.documentElement.dataset.theme="dark")}catch(e){}

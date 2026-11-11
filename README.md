@@ -11,7 +11,7 @@ Site statique (HTML / CSS / JS, sans framework).
 ├── style.css               # Base, navigation, accueil
 ├── project.css             # Pages projet et contact
 ├── script.js               # Thème clair / sombre, langue EN / FR, menu mobile, formulaire
-├── ROADMAP.md              # Suivi du projet
+├── theme.js                # Applique le thème sombre avant le premier affichage
 ├── assets/                 # CV, favicon, image Open Graph, polices, portrait
 └── pages/
     ├── contact/            # Coordonnées + formulaire (ouvre l'application mail)
@@ -23,10 +23,8 @@ Site statique (HTML / CSS / JS, sans framework).
 
 ## Code source et build
 
-Les fichiers servis à la racine (`index.html`, `style.css`, `script.js`, `pages/**`)
+Les fichiers servis à la racine (`index.html`, `style.css`, `script.js`, `theme.js`, `pages/**`)
 sont **minifiés**. Les **sources lisibles** vivent dans **`src/`** (ignoré par git → non publié).
-
-> ⚠️ `src/` n'est PAS dans le dépôt : **sauvegarde-le** (disque externe / dépôt privé). C'est ta vraie source éditable.
 
 **Pour modifier le site :**
 ```bash
@@ -45,12 +43,6 @@ npx serve .
 # puis ouvrir http://localhost:3000
 ```
 
-## Déploiement (GitHub Pages)
-
-Voir la section « Mise en ligne » ci-dessous / les instructions fournies.
-Tout fonctionne aussi bien à la racine d'un domaine qu'en sous-dossier (chemins relatifs).
-
 ## À compléter
 
-- [ ] Captures RobotStudio de la cellule de dessin
 - [ ] Page Robotic Control : table DH, code et résultats après le dépôt de décembre 2026
