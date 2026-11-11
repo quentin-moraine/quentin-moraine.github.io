@@ -16,17 +16,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quentin-moraine.github.io/pages/cao-machine/</loc>
+    <loc>https://quentin-moraine.github.io/pages/robotic-control/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quentin-moraine.github.io/pages/embedded-rfid/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quentin-moraine.github.io/pages/data-finance/</loc>
+    <loc>https://quentin-moraine.github.io/pages/yotaq/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

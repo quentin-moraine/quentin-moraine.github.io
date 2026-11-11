@@ -1,47 +1,35 @@
 /**
- * Build : src/ (lisible) → racine (servi), minifié + obfusqué.
- *  - JS  : javascript-obfuscator (illisible mais fonctionnel)
- *  - CSS : clean-css (minifié)
- *  - HTML: html-minifier-terser (collapse, minifie le CSS/JS inline)
+ * Build : src/ (lisible) -> racine (servi), minifie.
+ *  - JS   : terser
+ *  - CSS  : clean-css (tous les src/*.css)
+ *  - HTML : html-minifier-terser (toutes les pages de src/)
  *
  * Usage : npm run build
- * NB : les sources lisibles vivent dans src/ (hors dépôt public via .gitignore).
+ * NB : les sources vivent dans src/ (hors depot public via .gitignore).
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname, basename } from 'node:path';
 import { glob } from 'node:fs/promises';
 import CleanCSS from 'clean-css';
 import { minify as minifyHtml } from 'html-minifier-terser';
-import JavaScriptObfuscator from 'javascript-obfuscator';
+import { minify as minifyJs } from 'terser';
 
-const banner = `/* © 2026 Quentin Moraine — Tous droits réservés. Code protégé, copie interdite. */\n`;
+const banner = `/* (c) 2026 Quentin Moraine */\n`;
 
-// ---- JS : obfuscation (réglages modérés = illisible mais fiable & rapide) ----
-const js = readFileSync('src/script.js', 'utf8');
-const obf = JavaScriptObfuscator.obfuscate(js, {
-  compact: true,
-  controlFlowFlattening: false,      // off = plus fiable / rapide
-  deadCodeInjection: false,
-  stringArray: true,
-  stringArrayEncoding: ['base64'],
-  stringArrayThreshold: 0.75,
-  identifierNamesGenerator: 'mangled',
-  numbersToExpressions: true,
-  simplify: true,
-  selfDefending: false,              // off = pas de casse si reformaté
-  disableConsoleOutput: false,       // on garde notre message console ©
-}).getObfuscatedCode();
-writeFileSync('script.js', banner + obf);
-console.log('JS  obfusqué  →', (banner + obf).length, 'o');
+// ---- JS ----
+const js = await minifyJs(readFileSync('src/script.js', 'utf8'));
+writeFileSync('script.js', banner + js.code);
+console.log('JS   ->', 'script.js', `(${js.code.length} o)`);
 
-// ---- CSS : minification ----
-const css = readFileSync('src/style.css', 'utf8');
-const outCss = new CleanCSS({ level: 2 }).minify(css);
-if (outCss.errors.length) { console.error(outCss.errors); process.exit(1); }
-writeFileSync('style.css', banner + outCss.styles);
-console.log('CSS minifié   →', outCss.styles.length, 'o');
+// ---- CSS ----
+for await (const file of glob('src/*.css')) {
+  const out = new CleanCSS({ level: 2 }).minify(readFileSync(file, 'utf8'));
+  if (out.errors.length) { console.error(out.errors); process.exit(1); }
+  writeFileSync(basename(file), banner + out.styles);
+  console.log('CSS  ->', basename(file), `(${out.styles.length} o)`);
+}
 
-// ---- HTML : minification (toutes les pages) ----
+// ---- HTML ----
 const htmlOpts = {
   collapseWhitespace: true,
   removeComments: true,
@@ -50,14 +38,12 @@ const htmlOpts = {
   minifyJS: true,
   removeRedundantAttributes: false,
   keepClosingSlash: true,
-  ignoreCustomComments: [],
 };
 for await (const file of glob('src/**/*.html')) {
-  const src = readFileSync(file, 'utf8');
-  const out = await minifyHtml(src, htmlOpts);
+  const out = await minifyHtml(readFileSync(file, 'utf8'), htmlOpts);
   const dest = file.replace(/^src\//, '');
   mkdirSync(dirname(dest), { recursive: true });
   writeFileSync(dest, out);
-  console.log('HTML minifié  →', dest, `(${out.length} o)`);
+  console.log('HTML ->', dest, `(${out.length} o)`);
 }
-console.log('\n✅ Build terminé.');
+console.log('\nBuild termine.');

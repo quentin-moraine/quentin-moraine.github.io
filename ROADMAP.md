@@ -27,6 +27,18 @@ Dernière mise à jour : **2026-10-16**
 
 ## 🔄 En cours
 
+**11/11/2026 - refonte "portfolio quali"**
+- Fait : structure neuve, meme identite (orange, Barlow Condensed). Home = hero avec video pick and place, 4 projets avec image, competences alignees sur le CV suisse, parcours, a propos
+- Fait : gabarit unique des pages projet (probleme, ce que j'ai fait, probleme rencontre, resultats, ce que j'ai appris, la tech en clair)
+- Fait : nouvelle page `pages/robotic-control/` (UR3 / UR10e, "en cours"), sobre jusqu'au depot du 04/12/2026 : pas de table DH, pas de code, pas de valeurs
+- Fait : pages Finanza et RFID retirees ; loader, curseur custom, Process, cube 3D, Three.js, GSAP, blocage clic droit et obfuscation retires (JS minifie par terser)
+- Fait : anglais dans le HTML, francais en `data-fr` ; CV en ligne = `CV_Quentin_Moraine_CH.pdf` ; disponibilite "6 a 7 mois des mai 2027"
+- Fait : `src/404.html` passe par le build ; `src/project.css` pour les pages projet
+- A faire par Quentin : valider les textes "probleme rencontre" et "ce que j'ai appris" ; fournir photos de la machine de tri, captures RobotStudio, rendus CAO
+- A faire apres le 04/12/2026 : completer la page Robotic Control (DH, code, resultats)
+- Fait (suite) : page CAO retiree ; page `pages/yotaq/` (robot sumo) ; page tri de vis reecrite d'apres le rapport final (photo de la machine, appli VISSORT, resultats et limites)
+- Pas encore commite ni pousse
+
 **16/10/2026 — mise à jour Cranfield / recherche de stage**
 - ✅ Nouvelle page projet 01 `pages/abb-robotstudio/` (workshops RobotStudio + cellule de dessin IRB 120), vignette `assets/thumb-abb.svg`, sitemap
 - ✅ Anglais par défaut (FR au clic) ; badge « stage 7 mois dès avril 2027 » (hero + contact) ; section Parcours ; compétences alignées sur le CV EN
